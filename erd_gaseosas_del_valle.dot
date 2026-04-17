@@ -1,0 +1,19 @@
+digraph ERD {
+  rankdir=LR;
+  graph [fontsize=10, fontname="Arial"];
+  node [shape=record, fontsize=10, fontname="Arial"];
+  edge [fontsize=9, fontname="Arial"];
+
+  clientes [label="{CLIENTES|id_cliente (PK)\lnombre_completo\lidentificacion (UK)\ldireccion\ltelefono\lcorreo_electronico (UK)\l}"];
+  sedes [label="{SEDES|id_sede (PK)\lnombre_sede (UK)\lubicacion\lcapacidad_almacenamiento\lencargado\l}"];
+  productos [label="{PRODUCTOS|id_producto (PK)\lnombre\lcategoria\lprecio\lvolumen_ml\lstock_actual\lstock_minimo\l}"];
+  pedidos [label="{PEDIDOS|id_pedido (PK)\lfecha_pedido\lid_cliente (FK)\lid_sede (FK)\ltotal_sin_iva\ltotal_con_iva\l}"];
+  detalle [label="{DETALLE_PEDIDO|id_pedido (PK, FK)\lid_producto (PK, FK)\lcantidad\lsubtotal\l}"];
+  auditoria [label="{AUDITORIA_PRECIOS|id_auditoria (PK)\lid_producto (FK)\lprecio_anterior\lprecio_nuevo\lfecha_cambio\lusuario_bd\l}"];
+
+  clientes -> pedidos [label="1 a N"];
+  sedes -> pedidos [label="1 a N"];
+  pedidos -> detalle [label="1 a N"];
+  productos -> detalle [label="1 a N"];
+  productos -> auditoria [label="1 a N"];
+}
