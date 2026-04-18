@@ -248,6 +248,8 @@ Muestra los clientes que tienen al menos un pedido registrado.
 
 Ejecuta los scripts en este orden:
 
+functions.sql y triggers.sql deben ejecutarse como script completo (Alt+X en DBeaver), no por fragmentos, porque usan DELIMITER.
+
 ```sql
 SOURCE database.sql;
 SOURCE functions.sql;
